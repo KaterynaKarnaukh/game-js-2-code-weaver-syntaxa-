@@ -1,0 +1,121 @@
+/* Main Menu */
+.main-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-menu::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle at 20% 50%, var(--code-primary) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, var(--code-secondary) 0%, transparent 50%);
+    opacity: 0.1;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(30px, 30px) rotate(180deg);
+    }
+}
+
+.menu-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+}
+
+.game-title {
+    font-size: 48px;
+    color: var(--code-primary);
+    text-shadow:
+        0 0 10px var(--code-primary),
+        0 0 20px var(--code-primary),
+        0 0 30px var(--code-primary);
+    margin-bottom: 10px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px var(--code-primary), 0 0 20px var(--code-primary);
+    }
+
+    50% {
+        text-shadow: 0 0 20px var(--code-primary), 0 0 40px var(--code-primary);
+    }
+}
+
+.subtitle {
+    display: block;
+    font-size: 24px;
+    color: var(--code-secondary);
+    margin-top: 10px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.menu-btn {
+    padding: 15px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover:not(:disabled) {
+    background: var(--code-primary);
+    color: var(--bg-dark);
+    border-color: var(--code-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 212, 255, 0.3);
+}
+
+.menu-btn.primary {
+    background: var(--code-primary);
+    color: var(--bg-dark);
+    border-color: var(--code-primary);
+}
+
+.menu-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.intro-text {
+    margin-top: 40px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.intro-text p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}

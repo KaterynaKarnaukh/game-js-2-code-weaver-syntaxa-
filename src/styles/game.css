@@ -1,0 +1,103 @@
+.game-layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-dark);
+    overflow: hidden;
+}
+
+.game-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    overflow: hidden;
+    min-height: 0;
+    /* ВАЖЛИВО! */
+}
+
+.left-panel,
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    min-height: 0;
+    /* ВАЖЛИВО! */
+}
+
+.left-panel {
+    min-width: 0;
+}
+
+.right-panel {
+    min-width: 0;
+}
+
+/* Canvas контейнер */
+.game-canvas-container {
+    flex: 1;
+    background:
+        linear-gradient(135deg, var(--bg-dark) 0%, #0a0a1a 100%);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: auto;
+    /* Додати скрол якщо потрібно */
+    position: relative;
+    min-height: 0;
+    /* ВАЖЛИВО! */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-world {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+    /* Не стискати */
+}
+
+.game-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid var(--code-primary);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    z-index: 100;
+}
+
+.game-hint p {
+    font-size: 10px;
+    color: var(--code-primary);
+    text-align: center;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .game-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-content {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .game-canvas-container {
+        padding: 10px;
+    }
+}

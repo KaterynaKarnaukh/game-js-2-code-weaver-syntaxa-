@@ -1,0 +1,46 @@
+.code-editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-medium);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.editor-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--bg-light);
+    border-bottom: 2px solid var(--border);
+}
+
+.editor-title {
+    font-size: 12px;
+    color: var(--code-primary);
+}
+
+.run-button {
+    padding: 8px 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background: var(--code-success);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.run-button:hover {
+    background: var(--code-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 212, 255, 0.3);
+}
+
+.run-button:active {
+    transform: translateY(0);
+}

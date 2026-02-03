@@ -1,0 +1,57 @@
+@import '/src/styles/sprites.css';
+
+:root {
+    /* Кольори */
+    --bg-dark: #1a1a2e;
+    --bg-medium: #16213e;
+    --bg-light: #0f3460;
+
+    --code-primary: #00d4ff;
+    --code-secondary: #ff006e;
+    --code-success: #06ffa5;
+    --code-error: #ff3864;
+
+    --text-primary: #e4e4e4;
+    --text-secondary: #a0a0a0;
+    --border: #3a3a5c;
+
+    --inquisition: #8b0000;
+    --holy-light: #ffd700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-medium);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--code-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--code-secondary);
+}

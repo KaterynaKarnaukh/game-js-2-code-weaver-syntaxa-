@@ -1,0 +1,317 @@
+/* ========================================
+   СПРАЙТИ ВЕДЬМИ (PNG)
+   ======================================== */
+
+.sprite {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.witch-sprite {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+/* Стан: стоїть */
+.witch-sprite.idle {
+    background-image: url('/public/assets/sprites/characters/witch-idle.png');
+}
+
+/* Стан: йде вліво */
+.witch-sprite.walk-left {
+    background-image: url('/public/assets/sprites/characters/witch-walk-left.png');
+}
+
+/* Стан: йде вправо */
+.witch-sprite.walk-right {
+    background-image: url('/public/assets/sprites/characters/witch-walk-right.png');
+}
+
+/* Магічне світіння навколо ведьми */
+.witch-sprite::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+
+/* ========================================
+   ТАЙЛИ ПІДЛОГИ (CSS ГРАДІЄНТИ)
+   ======================================== */
+
+.tile {
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Кам'яна підлога */
+.tile-floor-stone {
+    background:
+        linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+        linear-gradient(45deg, #2a2a2a 0%, #252525 100%);
+    background-size: 8px 8px, 100% 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Цегляна стіна */
+.tile-wall-brick {
+    background:
+        repeating-linear-gradient(0deg,
+            #1a1a1a 0px,
+            #1a1a1a 7px,
+            #0a0a0a 7px,
+            #0a0a0a 8px),
+        repeating-linear-gradient(90deg,
+            #1a1a1a 0px,
+            #1a1a1a 15px,
+            #0a0a0a 15px,
+            #0a0a0a 16px);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid #000;
+}
+
+/* Трава */
+.tile-floor-grass {
+    background:
+        radial-gradient(circle at 30% 40%, #3a6b2e 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, #2d5016 0%, transparent 50%),
+        linear-gradient(135deg, #2d5016 0%, #3a6b2e 100%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Дерев'яна стіна */
+.tile-wall-wood {
+    background:
+        repeating-linear-gradient(90deg,
+            #4a3820 0px,
+            #4a3820 7px,
+            #3a2810 7px,
+            #3a2810 8px),
+        linear-gradient(180deg, #4a3820 0%, #3a2810 100%);
+    border: 1px solid #2a1800;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+
+/* ========================================
+   ОБ'ЄКТИ ВЗАЄМОДІЇ (CSS)
+   ======================================== */
+
+/* Двері закриті */
+.object-door-closed {
+    width: 32px;
+    height: 48px;
+    background:
+        linear-gradient(180deg, #3a2810 0%, #2a1800 100%);
+    border: 2px solid #1a0800;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.object-door-closed::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #8b4513;
+    border-radius: 50%;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Двері відчинені */
+.object-door-open {
+    width: 32px;
+    height: 48px;
+    background:
+        linear-gradient(90deg, transparent 0%, transparent 40%, #3a2810 40%, #2a1800 100%);
+    border-left: none;
+    border-right: 2px solid #1a0800;
+    border-top: 2px solid #1a0800;
+    border-bottom: 2px solid #1a0800;
+    border-radius: 0 4px 0 0;
+    position: relative;
+}
+
+/* Магічна куля світла */
+.object-light-orb {
+    width: 16px;
+    height: 16px;
+    background:
+        radial-gradient(circle, #ffffff 0%, #00d4ff 40%, rgba(0, 212, 255, 0.5) 70%, transparent 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px rgba(0, 212, 255, 0.5);
+    animation: float-orb 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes float-orb {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.object-light-orb::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -4px;
+    left: -4px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-orb 2s ease-in-out infinite;
+}
+
+@keyframes pulse-orb {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Відро (для квесту) */
+.object-bucket {
+    width: 16px;
+    height: 16px;
+    background:
+        linear-gradient(180deg, #666 0%, #444 50%, #333 100%);
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #222;
+    position: relative;
+}
+
+.object-bucket::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: #555;
+    top: 2px;
+    left: 2px;
+    border-radius: 1px;
+}
+
+/* Відро зламане */
+.object-bucket.broken {
+    opacity: 0.5;
+    filter: grayscale(0.5);
+}
+
+.object-bucket.broken::after {
+    content: '✕';
+    position: absolute;
+    color: #ff3864;
+    font-size: 12px;
+    top: -2px;
+    right: -2px;
+    text-shadow: 0 0 2px #000;
+}
+
+
+/* ========================================
+   ЕФЕКТИ ТА ЧАСТИНКИ
+   ======================================== */
+
+/* Іскра коду */
+.particle-code {
+    width: 4px;
+    height: 4px;
+    background: #00d4ff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #00d4ff;
+    animation: sparkle 1s ease-out forwards;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx, 10px), var(--ty, -20px)) scale(0);
+    }
+}
+
+/* Glow ефект */
+.effect-glow {
+    width: 32px;
+    height: 32px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: expand-glow 0.5s ease-out forwards;
+}
+
+@keyframes expand-glow {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+/* ========================================
+   UTILITY КЛАСИ
+   ======================================== */
+
+.pixelated {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+}
